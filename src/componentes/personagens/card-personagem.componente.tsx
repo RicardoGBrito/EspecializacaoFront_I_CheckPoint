@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BotaoFavorito from "../botoes/botao-favorito.componente";
-import { Action, cards } from "../../redux/reducers/types";
+import { Action, cards } from "../../redux/types";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import {  useDispatch } from "react-redux";

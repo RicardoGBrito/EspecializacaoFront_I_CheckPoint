@@ -1,14 +1,21 @@
-import { legacy_createStore } from "redux"
+import { legacy_createStore, applyMiddleware } from "redux"
 import {combineReducers} from "@reduxjs/toolkit"
 import {favoriteReducer} from "../redux/reducers/favoriteReducer"
-import { cards } from "./reducers/types"
+import thunk from "redux-thunk"
+import {composeWithDevTools} from "redux-devtools-extension"
 import {TypedUseSelectorHook, useSelector as useReduxSelector} from "react-redux"
+import getDataReducer from "./reducers/getDataReducer"
+import pageReducer from "./reducers/pageReducer"
+import nameReducer from "./reducers/nameReducer"
 
 
 
 
 const reducers = combineReducers({
-    favorite: favoriteReducer
+    favorite: favoriteReducer,
+    getData: getDataReducer,
+    page: pageReducer,
+    name: nameReducer
 })
 
 export type RootState = ReturnType<typeof reducers>
@@ -23,4 +30,4 @@ export type RootState = ReturnType<typeof reducers>
 
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
 
-export const store = legacy_createStore(reducers)
+export const store = legacy_createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

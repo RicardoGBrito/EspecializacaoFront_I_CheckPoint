@@ -2,7 +2,7 @@ import "./botao-favorito.css";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import {  useDispatch } from "react-redux";
-import { Action} from "../../redux/reducers/types";
+import { Action} from "../../redux/types";
 import { Dispatch } from "redux";
 /**
  * Botão que indica se um elemento é favorito ou não, e dá a possibilidade de marcá-lo/desmarcá-lo

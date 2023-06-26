@@ -1,4 +1,4 @@
-import {Action} from "../reducers/types"
+import {Action} from "../types"
 
 
 const initialState ={
