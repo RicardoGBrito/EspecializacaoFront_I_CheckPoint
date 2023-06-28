@@ -2,10 +2,10 @@ import axios from 'axios';
 import {GET_ALL_CARDS, GET_CARDS, GET_LOCATION, GET_EPISODES} from "../actions-types"
 import { cards, episodeCard, locationCard } from '../types';
 
-export function getAllCardsAction(payload:Array<cards>){
+export function getAllCardsAction(payload:Array<cards>, page:Number){
     return{
         type: GET_ALL_CARDS,
-        payload: payload
+        payload: [payload,page]
     }
 }
 
@@ -37,18 +37,17 @@ export const getAllCards = (page:Number) => {
         const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
         
         
-        dispatch(getAllCardsAction(response.data.results))
+        dispatch(getAllCardsAction(response.data.results,page))
     }
 
 }
 
 export const getCards = (name:String) => {
-    console.log(1)
+    
     
     return async (dispatch) => {
         const response = await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`)
-        console.log(2)
-        console.log(response.data)
+        
 
         dispatch(getCardsAction(response.data.results))
     }

@@ -4,6 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 import {  useDispatch } from "react-redux";
 import { Action} from "../../redux/types";
 import { Dispatch } from "redux";
+import { CANCEL_FAVORITE, FAVORITE } from "../../redux/actions-types";
 /**
  * Botão que indica se um elemento é favorito ou não, e dá a possibilidade de marcá-lo/desmarcá-lo
  *
@@ -12,24 +13,19 @@ import { Dispatch } from "redux";
  *
  * @returns Elemento JSX
  */
-const BotaoFavorito = ({ isFavorito, onClick, cards }) => {
+const BotaoFavorito = ({ isFavorite, card }) => {
   
   const dispatch:Dispatch<Action> = useDispatch()
 
-  /* if(isFavorito){
-    console.log(isFavorito)
-    dispatch({type: "FAVORITE", payload:{cards:cards}})
-  }else{
-    dispatch({type: "CANCEL_FAVORITE", payload:{cards:cards}})
-    
-  } */
-
+  
   return (
-    <div onClick={onClick}
-      /* dispatch={isFavorito?dispatch({type: "FAVORITE", payload:{cards:cards, favorite:isFavorito}}):dispatch({type: "CANCEL_FAVORITE", payload:{cards:cards, favorite:isFavorito}})} */ 
-      className="">
+    <div onClick={()=>!isFavorite(card.name)
+      ?dispatch({type: FAVORITE, payload:{cards:card}})
+      :dispatch({type: CANCEL_FAVORITE, payload:{cards:card}})}>
       
-      {isFavorito ? <StarIcon dispatch={dispatch({type: "FAVORITE", payload:{cards:cards}})} className="text-yellow-400 " style={{fontSize:"50px"}} /> : <StarBorderIcon dispatch={()=>dispatch({type: "CANCEL_FAVORITE", payload:{cards:cards}})} style={{fontSize:"40px"}}/>}
+      {
+        isFavorite(card.name)? <StarIcon className="text-yellow-400 " style={{fontSize:"50px"}}/>:<StarBorderIcon style={{fontSize:"40px"}}/>
+      }
     </div>
   );
 };

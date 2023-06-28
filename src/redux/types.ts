@@ -50,7 +50,7 @@ export type episodeCard={
 type FavoriteAction = {
     type: "FAVORITE",
     payload:{
-        cards:cards,
+        cards:cards
         
     }
 }
@@ -58,7 +58,7 @@ type FavoriteAction = {
 type CancelFavoriteAction ={
     type: "CANCEL_FAVORITE",
     payload:{
-        cards:cards,
+        cards:cards
         
     }
 }
@@ -75,6 +75,14 @@ type GetCards ={
     type: "GET_CARDS",
     payload: {
         cards:cards
+    }
+}
+
+type UpdateCards ={
+    type: "UPDATE_CARDS",
+    payload: {
+        cards:cards,
+        page:number
     }
 }
 
@@ -116,6 +124,6 @@ type ClearFilterName ={
 
 
 export type Action = FavoriteAction | CancelFavoriteAction | ClearFavorite
-export type Action2 = GetLocation | GetEpisodes | GetAllCards | GetCards | ClearFilter
+export type Action2 = GetLocation | GetEpisodes | GetAllCards | GetCards | UpdateCards | ClearFilter
 export type Action3 = PageIncrement | PageDecrement
 export type Action4 = FilterName | ClearFilterName

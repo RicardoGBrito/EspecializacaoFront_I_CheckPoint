@@ -12,7 +12,7 @@ export default function pageReducer(state=initialState, action:Action3){
     switch(action.type){
 
         case PAGE_INCREMENT:
-            console.log(5)
+            
             return{
                 ...copyState, page:copyState.page+1
             }

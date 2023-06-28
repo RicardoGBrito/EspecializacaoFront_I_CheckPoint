@@ -1,8 +1,9 @@
+import { CANCEL_FAVORITE, CLEAR_FAVORITE, FAVORITE } from "../actions-types"
 import {Action} from "../types"
 
 
 const initialState ={
-    cards: [
+    favoriteCards: [
         /* {
             id:null,
             name:"",
@@ -35,19 +36,27 @@ export const favoriteReducer = (state=initialState, action:Action ) =>{
 
     switch(action.type){
 
-        case "FAVORITE":
-            copyState.cards.push(action.payload.cards)
-            console.log(copyState)
-            return {...copyState}
+        case FAVORITE:
+            const findCard =  copyState.favoriteCards.find(favorite=>favorite.name === action.payload.cards.name)
             
-        case "CANCEL_FAVORITE":
-            
-            copyState.cards.splice(copyState.cards.indexOf(action.payload.cards),1)
-            return {...copyState}
+            if(!findCard){
+                return {
+                    ...copyState, favoriteCards:[...copyState.favoriteCards, action.payload.cards]
+                }
+            }
 
-        case "CLEAR_FAVORITE":
+            break
+        case CANCEL_FAVORITE:
+            const cardsFiltrados = copyState.favoriteCards.filter(favorite=>favorite.name!==action.payload.cards.name)
+
             return{
-                ...copyState, cards:[]
+                ...copyState, favoriteCards:cardsFiltrados
+            }
+
+
+        case CLEAR_FAVORITE:
+            return{
+                ...copyState, favoriteCards:[]
             }
         default:
             return state

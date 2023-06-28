@@ -1,10 +1,10 @@
-import { useState } from "react";
-import BotaoFavorito from "../botoes/botao-favorito.componente";
 import { Action, cards } from "../../redux/types";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
-import {  useDispatch } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
+import { CANCEL_FAVORITE, FAVORITE } from "../../redux/actions-types";
+import BotaoFavorito from "../botoes/botao-favorito.componente";
 
 
 
@@ -19,36 +19,17 @@ import { Dispatch } from "redux";
 
 const CardPersonagem = (props:cards) => {
 
-  
+  const {favoriteCards} = useSelector(store=>store.favorite)
 
-  const dispatch:Dispatch<Action> = useDispatch()
-
-  const [favorito, setFavorito] = useState<boolean>(false)
-
+  /* const dispatch:Dispatch<Action> = useDispatch() */
 
   
-
-  function definirEstado(){
-
-    const fav = (!favorito)
-    setFavorito(!favorito)
-
-    return fav
+  function isFavorite(name:string){
+    return favoriteCards.find(favorite=>favorite.name===name)
   }
-
-  function favoritar(){
-    const estado = definirEstado()
-
-    if(estado){
-      console.log(estado)
-      dispatch({type: "FAVORITE", payload:{cards:{...props.values, favorite:estado}}})
-    }else{
-      dispatch({type: "CANCEL_FAVORITE", payload:{cards:{...props.values, favorite:estado}}})
-    }
-  }
-
-
   
+
+    
   return (
     <div className="flex rounded-xl w-[500px] min-w-[350px] " >
       <img
@@ -71,12 +52,19 @@ const CardPersonagem = (props:cards) => {
             <p className="text-zinc-300 text-lg">{(props.values.location.name === "unknown")?"Desconhecida":props.values.location.name}</p>
           </div>
         
-        {/* Deixei o botão para tentar colocar nele a lógica abaixo  */}  
+
         </div>
-        {/* <BotaoFavorito onClick={favoritar} isFavorito={favorito} cards={props.values}/> */}
-        {
-          (props.values.favorite)?(<StarIcon onClick={()=>dispatch({type: "CANCEL_FAVORITE", payload:{cards:props.values}})} className="text-yellow-400 " style={{fontSize:"50px"}}/>):(favorito? <StarIcon onClick={favoritar} className="text-yellow-400 " style={{fontSize:"50px"}}/>:<StarBorderIcon onClick={favoritar} style={{fontSize:"40px"}}/>)
-        }
+
+        <BotaoFavorito isFavorite={isFavorite} card={props.values} />
+        {/* <button onClick={()=>!isFavorite(props.values.name)
+                                ?dispatch({type: FAVORITE, payload:{cards:props.values}})
+                                :dispatch({type: CANCEL_FAVORITE, payload:{cards:props.values}})}>
+          {
+            isFavorite(props.values.name)? <StarIcon className="text-yellow-400 " style={{fontSize:"50px"}}/>:<StarBorderIcon style={{fontSize:"40px"}}/>
+          }
+
+        </button> */}
+
       </div>
     </div>
   );

@@ -1,4 +1,8 @@
+
+import { useDispatch } from "react-redux";
 import GradePersonagensFavoritos from "../componentes/personagens/grade-personagens-favoritos";
+import { type } from "@testing-library/user-event/dist/type";
+import { CLEAR_FAVORITE } from "../redux/actions-types";
 
 
 /**
@@ -10,14 +14,15 @@ import GradePersonagensFavoritos from "../componentes/personagens/grade-personag
  * @returns Página de favoritos
  */
 const PaginaFavoritos = () => {
+
+  const dispatch = useDispatch()
   return (
     <div className="container">
       <div className="actions">
         <h3>Personagens Favoritos</h3>
-        <button className="danger">Test Button</button>
+        <button className="danger" onClick={()=>dispatch({type:CLEAR_FAVORITE})}>Limpar Favoritos</button>
       </div>
       <GradePersonagensFavoritos/>
-      {/* <Paginacao/> */}
     </div>
   );
 };

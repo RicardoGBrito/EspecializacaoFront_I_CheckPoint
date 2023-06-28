@@ -14,7 +14,7 @@ const Filtros = () => {
   function limparFiltro(){
     dispatch({type:CLEAR_FILTER_NAME})
     dispatch({type:CLEAR_FILTER})
-    setStateError(!stateError)
+    setStateError(true)
     setInputName("")
   }
 
@@ -45,7 +45,7 @@ const Filtros = () => {
 
         </div>
         <button onClick={filtrar} disabled={inputName===""} className="primary min-w-[130px]">Filtrar</button>
-        <button onClick={limparFiltro} disabled={inputName===""} className="danger min-w-[130px]">Limpar filtro</button>
+        <button onClick={limparFiltro} className="danger min-w-[130px]">Limpar filtro</button>
         
       </div>
     </div>
