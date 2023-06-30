@@ -1,9 +1,9 @@
 import "./grade-personagem.css";
 import CardPersonagem from "./card-personagem.componente";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllCards, getCards, allPages, getEpisodes} from "../../redux/services/requests"
-import { UPDATE_CARDS } from "../../redux/actions-types";
+import {getAllCards, getCards, getEpisodes} from "../../redux/services/requests"
+
 
 /**
  * Grade de personagens para a página inicial
@@ -23,10 +23,9 @@ const GradePersonagem = () => {
   const dispatch = useDispatch()
   const pages = [1,2,3]
 
-  console.log(cards)
+  
   
   useEffect(()=>{
-    console.log(favoriteCards)
     dispatch(getAllCards(page))
     if(episodes.length<51){
 
@@ -42,7 +41,6 @@ const GradePersonagem = () => {
   },[page,name,favoriteCards])
   
   
-  console.log(cards)
   
   
   return (

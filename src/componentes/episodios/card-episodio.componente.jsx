@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import "./card-episodio.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getEpisodes } from "../../redux/services/requests";
+
 
 /**
  * Card para cada episódio na visualização do personagem.

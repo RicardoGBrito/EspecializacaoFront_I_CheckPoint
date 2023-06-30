@@ -124,6 +124,6 @@ type ClearFilterName ={
 
 
 export type Action = FavoriteAction | CancelFavoriteAction | ClearFavorite
-export type Action2 =  GetEpisodes | GetAllCards | GetCards | UpdateCards | ClearFilter
+export type Action2 = GetCard | GetEpisodes | GetAllCards | GetCards | UpdateCards | ClearFilter
 export type Action3 = PageIncrement | PageDecrement
 export type Action4 = FilterName | ClearFilterName

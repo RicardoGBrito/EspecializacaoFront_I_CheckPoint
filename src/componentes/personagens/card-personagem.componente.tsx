@@ -1,9 +1,6 @@
-import { Action, cards } from "../../redux/types";
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
+import { cards } from "../../redux/types";
 import {  useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "redux";
-import { CANCEL_FAVORITE, FAVORITE, GET_CARD } from "../../redux/actions-types";
+import {  GET_CARD } from "../../redux/actions-types";
 import BotaoFavorito from "../botoes/botao-favorito.componente";
 import { Link } from "react-router-dom";
 

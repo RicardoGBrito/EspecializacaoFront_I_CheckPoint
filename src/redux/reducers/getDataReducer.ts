@@ -1,5 +1,5 @@
 import { Action2 } from "../types"
-import {GET_ALL_CARDS, GET_CARDS, GET_LOCATION, GET_EPISODES, CLEAR_FILTER, UPDATE_CARDS, GET_CARD} from "../actions-types"
+import {GET_ALL_CARDS, GET_CARDS, GET_EPISODES, CLEAR_FILTER, UPDATE_CARDS, GET_CARD} from "../actions-types"
 
 
 
@@ -56,7 +56,6 @@ export default function getDataReducer(state=initialState, action:Action2){
             }
         
         case UPDATE_CARDS:
-            /* copyState.allPages[action.payload.page-1] = action.payload.cards */
             
             return{
                 ...copyState, cards:action.payload.cards

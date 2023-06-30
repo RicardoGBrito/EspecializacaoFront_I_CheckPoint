@@ -18,7 +18,7 @@ export function getCardsAction(payload:cards){
 
 
 export function getEpisodesAction(payload:episodeCard){
-    console.log(payload)
+    
     return{
         type: GET_EPISODES,
         payload: payload
