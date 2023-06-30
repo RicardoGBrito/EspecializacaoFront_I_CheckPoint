@@ -5,6 +5,7 @@ import PaginaInicio from "./paginas/Inicio.pagina";
 import PaginaFavoritos from "./paginas/Favoritos.pagina";
 import PaginaDetalhe from "./paginas/Detalhe.pagina";
 import Cabecalho from "./componentes/layout/cabecalho.componente";
+import Error from './paginas/Error';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<PaginaInicio />} />
         <Route path="favoritos" element={<PaginaFavoritos />} />
         <Route path="detalhe" element={<PaginaDetalhe />} />
+        <Route path="error" element={<Error />} />
       </Routes>
     </div>
   );
