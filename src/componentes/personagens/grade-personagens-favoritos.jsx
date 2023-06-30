@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux"
-import { cards } from "../../redux/types"
 import CardPersonagem from "./card-personagem.componente"
 import "./grade-personagem.css";
 

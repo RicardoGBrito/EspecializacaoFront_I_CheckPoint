@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./filtros.css";
-import { getCards } from "../../redux/services/requests";
 import { useState } from "react";
 import { CLEAR_FILTER, CLEAR_FILTER_NAME, FILTER_NAME } from "../../redux/actions-types";
 
@@ -29,9 +27,9 @@ const Filtros = () => {
   }
 
   return (
-    <div className="filtros">
-      <label for="nome">Filtrar por nome:</label>
-      <div className="flex gap-10">
+    <div>
+      <label for="nome" className="font-bold text-xl ">Filtrar por nome:</label>
+      <div className="flex gap-10 mt-5">
         <div className="flex flex-col w-full">
           <input
             className={!stateError?"rounded-[3px] py-[15px] px-[20px] flex-grow-1 border-[1px] border-red-500":"rounded-[3px] py-[15px] px-[20px] flex-grow-1 border-[1px] border-[#d0d0d0]"}

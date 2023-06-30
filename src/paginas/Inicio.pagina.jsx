@@ -14,15 +14,18 @@ const PaginaInicio = () => {
 
 
   return (
-    <div className="container">
-      <div className="actions">
-        <h3>Catálogo de Personagens</h3>
-        
+    <div className="w-full bg-slate-700">
+      <h3 className="text-4xl font-bold p-5 bg-slate-900 w-full text-center text-slate-50">Catálogo de Personagens</h3>
+      <div className="container bg-slate-700">
+        <div className="actions">
+          
+        </div>
+        <Filtros />
+        <Paginacao />
+        <GradePersonagens />
+        <Paginacao />
       </div>
-      <Filtros />
-      <Paginacao />
-      <GradePersonagens />
-      <Paginacao />
+
     </div>
   );
 };

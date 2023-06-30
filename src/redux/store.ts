@@ -20,11 +20,6 @@ const reducers = combineReducers({
 
 export type RootState = ReturnType<typeof reducers>
 
-/* {
-    favorite:{
-        favoritesCards: cards
-    }
-} */
 
 
 

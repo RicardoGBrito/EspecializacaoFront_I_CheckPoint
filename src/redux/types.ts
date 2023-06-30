@@ -78,6 +78,12 @@ type GetCards ={
     }
 }
 
+type GetCard ={
+    type: "GET_CARD",
+    payload:cards
+    
+}
+
 type UpdateCards ={
     type: "UPDATE_CARDS",
     payload: {
@@ -90,12 +96,6 @@ type ClearFilter={
     type: "CLEAR_FILTER"
 }
 
-type GetLocation = {
-    type: "GET_LOCATION",
-    payload:{
-        cards:cards
-    }
-}
 
 type GetEpisodes = {
     type: "GET_EPISODES",
@@ -124,6 +124,6 @@ type ClearFilterName ={
 
 
 export type Action = FavoriteAction | CancelFavoriteAction | ClearFavorite
-export type Action2 = GetLocation | GetEpisodes | GetAllCards | GetCards | UpdateCards | ClearFilter
+export type Action2 =  GetEpisodes | GetAllCards | GetCards | UpdateCards | ClearFilter
 export type Action3 = PageIncrement | PageDecrement
 export type Action4 = FilterName | ClearFilterName

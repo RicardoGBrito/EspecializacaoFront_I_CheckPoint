@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {GET_ALL_CARDS, GET_CARDS, GET_LOCATION, GET_EPISODES} from "../actions-types"
-import { cards, episodeCard, locationCard } from '../types';
+import {GET_ALL_CARDS, GET_CARDS,  GET_EPISODES} from "../actions-types"
+import { cards, episodeCard } from '../types';
 
 export function getAllCardsAction(payload:Array<cards>, page:Number){
     return{
@@ -16,14 +16,9 @@ export function getCardsAction(payload:cards){
     }
 }
 
-export function getLocationAction(payload:locationCard){
-    return{
-        type: GET_LOCATION,
-        payload: payload
-    }
-}
 
 export function getEpisodesAction(payload:episodeCard){
+    console.log(payload)
     return{
         type: GET_EPISODES,
         payload: payload
@@ -54,20 +49,11 @@ export const getCards = (name:String) => {
 
 }
 
-export const getLocation = (name:String) => {
+
+export const getEpisodes = (page:number) => {
 
     return async (dispatch) => {
-        const response = await axios.get(`https://rickandmortyapi.com/api/location/?name=${name}`)
-
-        dispatch(getLocationAction(response.data.results))
-    }
-
-}
-
-export const getEpisodes = (url:String) => {
-
-    return async (dispatch) => {
-        const response = await axios.get(`${url}`)
+        const response = await axios.get(`https://rickandmortyapi.com/api/episode?page=${page}`)
 
         dispatch(getEpisodesAction(response.data.results))
     }

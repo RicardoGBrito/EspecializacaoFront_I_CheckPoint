@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import "./card-episodio.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getEpisodes } from "../../redux/services/requests";
 
 /**
  * Card para cada episódio na visualização do personagem.
@@ -8,13 +11,15 @@ import "./card-episodio.css";
  *
  * @returns Elemento JSX
  */
-const CardEpisodio = () => {
+const CardEpisodio = (props) => {
+
+
   return (
-    <div className="card-episodio">
-      <h4>Close Rick-counters of the Rick Kind</h4>
-      <div>
-        <span>S01E01</span>
-        <span>Lançado em: April 7, 2014</span>
+    <div className="flex flex-col bg-slate-900 rounded-xl p-5">
+      <h4 className="text-2xl mb-2">{props.values.name}</h4>
+      <div className="flex gap-4 text-zinc-300 text-lg">
+        <span>{props.values.episode}</span>
+        <span>Lançado em: {props.values.air_date}</span>
       </div>
     </div>
   );

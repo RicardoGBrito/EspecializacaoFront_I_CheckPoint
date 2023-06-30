@@ -1,16 +1,18 @@
 import { Action2 } from "../types"
-import {GET_ALL_CARDS, GET_CARDS, GET_LOCATION, GET_EPISODES, CLEAR_FILTER, UPDATE_CARDS} from "../actions-types"
+import {GET_ALL_CARDS, GET_CARDS, GET_LOCATION, GET_EPISODES, CLEAR_FILTER, UPDATE_CARDS, GET_CARD} from "../actions-types"
 
 
 
 
 const initialState = {
-    allPages:[
-
-    ],
+    
     cards:[
 
     ],
+
+    card:{
+
+    },
     cardsFilter:[
 
     ],
@@ -26,21 +28,24 @@ const initialState = {
 export default function getDataReducer(state=initialState, action:Action2){
     
     const copyState = {...state}
-
+    
+    
     switch(action.type){
 
         case GET_ALL_CARDS:
 
-            if(copyState.allPages.length<action.payload[1]){
-                copyState.allPages.push(action.payload[0].map(element => {
-                    return {...element, favorite:false}}))
-            }
 
             return {
                 ...copyState, cards:action.payload[0].map(element => {
                     return {...element, favorite:false}
                     
                 })
+            }
+        
+        case GET_CARD:
+
+            return{
+                ...copyState, card:action.payload
             }
         
         case GET_CARDS:
@@ -62,15 +67,14 @@ export default function getDataReducer(state=initialState, action:Action2){
                 ...copyState, cardsFilter:[]
             }
 
-        case GET_LOCATION:
-            
-            return{
-                ...copyState, location: action.payload
-            }
-
+        
         case GET_EPISODES:
-            copyState.episodes.push(action.payload.episodes)
-
+            
+            action.payload.forEach(item=>(
+                copyState.episodes.push(item)
+            ))
+                
+                
             return{
                 ...copyState
             }
